@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: bob-reviewer
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/bob_reviewer}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:password}
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+  task:
+    execution:
+      # Let in-flight reviews finish on graceful shutdown; a hard kill still loses them.
+      shutdown:
+        await-termination: true
+        await-termination-period: 120s
+  ai:
+    openai:
+      api-key: ${OPENROUTER_API_KEY}
+      base-url: https://openrouter.ai/api/v1
+      chat:
+        options:
+          model: deepseek/deepseek-v4.1-flash-1017
+
+ai:
+  # Blank disables auth on /ai (warns at startup), same as the webhook secret.
+  access-token: ${AI_ACCESS_TOKEN:}
+
+github:
+  token: ${GITHUB_TOKEN:}
+  webhook:
+    secret: ${GITHUB_WEBHOOK_SECRET:}

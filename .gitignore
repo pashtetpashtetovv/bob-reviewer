@@ -1,0 +1,22 @@
+# Build output
+build/
+.gradle/
+.kotlin/
+out/
+
+# IDE
+.idea/
+*.iml
+
+# Local secrets and config
+.env
+.env.*
+*.env
+application-local.*
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
