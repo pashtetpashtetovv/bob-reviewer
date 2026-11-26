@@ -26,6 +26,6 @@ ai:
   access-token: ${AI_ACCESS_TOKEN:}
 
 github:
-  token: ${GITHUB_TOKEN:}
+  token: ${GITHUB_TOKEN_W:}
   webhook:
     secret: ${GITHUB_WEBHOOK_SECRET:}
